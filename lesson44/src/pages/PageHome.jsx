@@ -126,7 +126,7 @@ export default function PageHome() {
 
 		{
 			id: 8,
-			imgUrl: '/images/blog4.svg',
+			imgUrl: 'images/blog4.svg',
 			title: 'E-commerce development',
 			desc: 'Ecommerce website offering access to the latest and greatest gadgets and accessories.',
 			herf: '#'
