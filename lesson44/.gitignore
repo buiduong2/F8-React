@@ -23,4 +23,3 @@ dist-ssr
 *.sw?
 
 .prettierrc
-vite.config.js

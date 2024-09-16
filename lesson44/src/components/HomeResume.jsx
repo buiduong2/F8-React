@@ -1,6 +1,4 @@
-import {
-	ArrowRightIcon
-} from '@heroicons/react/24/solid'
+import { ArrowRightIcon } from '@heroicons/react/24/solid'
 import {
 	Button,
 	Card,
@@ -14,8 +12,7 @@ HomeResume.propTypes = {
 	certs: PropTypes.arrayOf(PropTypes.object)
 }
 
-export default function HomeResume({certs}) {
-
+export default function HomeResume({ certs }) {
 	return (
 		<section className="mx-8 my-24">
 			<div className="container mx-auto grid grid-cols-1 gap-10 lg:grid-cols-2">
@@ -42,7 +39,7 @@ export default function HomeResume({certs}) {
 								className="w-4/5 flex-row justify-start"
 								shadow={false}
 							>
-								<CardHeader className="mt-0 flex size-12 items-center justify-center bg-black">
+								<CardHeader className="mt-0 flex size-12 shrink-0 items-center justify-center bg-black">
 									{cert.icon.render({
 										className: 'size-6 text-white'
 									})}

@@ -12,7 +12,7 @@ HomeContractForm.propTypes = {
 }
 export default function HomeContractForm({ jobs }) {
 	return (
-		<form action="POST" className="px-5 py-5 lg:px-10">
+		<form action="POST" className="p-5 lg:px-10">
 			<div className="mb-8 flex flex-col gap-4 lg:flex-row">
 				<Input
 					variant="static"

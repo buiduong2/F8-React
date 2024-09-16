@@ -1,6 +1,6 @@
-import { List, Typography } from '@material-tailwind/react'
-import HomeContractForm from './HomeContractForm'
+import { Typography } from '@material-tailwind/react'
 import PropTypes from 'prop-types'
+import HomeContractForm from './HomeContractForm'
 
 HomeContract.propTypes = {
 	contracts: PropTypes.arrayOf(PropTypes.object),
@@ -25,8 +25,8 @@ export default function HomeContract({ contracts, formJobs }) {
 				</Typography>
 			</div>
 
-			<div className="container mx-auto grid gap-10 rounded-lg p-6 shadow-lg lg:grid-cols-12">
-				<div className="col-span-full rounded-lg bg-gray-900 p-16 lg:col-span-5">
+			<div className="container mx-auto grid grid-cols-1 gap-10 rounded-lg p-6 shadow-lg lg:grid-cols-12">
+				<div className="rounded-lg bg-gray-900 p-5 md:p-16 lg:col-span-5">
 					<Typography variant="h4" color="white" className="mb-2">
 						Contact Information
 					</Typography>
@@ -38,7 +38,7 @@ export default function HomeContract({ contracts, formJobs }) {
 						Fill up the form and our Team will get back to you
 						within 24 hours.
 					</Typography>
-					<List className="flex flex-col gap-4">
+					<ul className="flex flex-col gap-4">
 						{contracts.map(contract => (
 							<Typography
 								key={contract.id}
@@ -51,9 +51,9 @@ export default function HomeContract({ contracts, formJobs }) {
 								{contract.label}
 							</Typography>
 						))}
-					</List>
+					</ul>
 				</div>
-				<div className="col-span-full lg:col-span-7">
+				<div className="lg:col-span-7">
 					<HomeContractForm jobs={formJobs} />
 				</div>
 			</div>
