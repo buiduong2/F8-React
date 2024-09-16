@@ -1,14 +1,13 @@
 import { Typography } from '@material-tailwind/react'
 import PropTypes from 'prop-types'
 
-HomeClientList2.propTypes = {
+HomeClientListGrayScale.propTypes = {
 	logos: PropTypes.arrayOf(PropTypes.string)
 }
 
-export default function HomeClientList2({logos}) {
-
+export default function HomeClientListGrayScale({ logos }) {
 	return (
-		<section className="mx-8 my-20">
+		<section className="px-8 py-20">
 			<div className="container mx-auto">
 				<div className="mb-8 text-center">
 					<Typography variant="h6" color="gray" className="mb-4">
@@ -22,7 +21,7 @@ export default function HomeClientList2({logos}) {
 				<div className="flex flex-wrap items-center justify-center gap-6 grayscale">
 					{logos.map((logo, index) => (
 						<div key={index} className="w-40">
-							<img src={`/logos/${logo}`} />
+							<img src={logo} />
 						</div>
 					))}
 				</div>

@@ -4,7 +4,7 @@ import HomeSkillList from '../components/HomeSkillList'
 import HomeBlogList from '../components/HomeBlogList'
 import HomeResume from '../components/HomeResume'
 import HomeFeedBack from '../components/HomeFeedBack'
-import HomeClientList2 from '../components/HomeClientList2'
+import HomeClientListGrayScale from '../components/HomeClientListGrayScale'
 import HomeContract from '../components/HomeContract'
 import {
 	RectangleGroupIcon,
@@ -22,12 +22,12 @@ import {
 } from '@heroicons/react/24/solid'
 export default function PageHome() {
 	const logos = [
-		'logo-coinbase.svg',
-		'logo-spotify.svg',
-		'logo-pinterest.svg',
-		'logo-google.svg',
-		'logo-amazon.svg',
-		'logo-netflix.svg'
+		'logos/logo-coinbase.svg',
+		'logos/logo-spotify.svg',
+		'logos/logo-pinterest.svg',
+		'logos/logo-google.svg',
+		'logos/logo-amazon.svg',
+		'logos/logo-netflix.svg'
 	]
 
 	const skills = [
@@ -72,14 +72,14 @@ export default function PageHome() {
 	const blogs = [
 		{
 			id: 1,
-			imgUrl: '/images/blog1.svg',
+			imgUrl: 'images/blog1.svg',
 			title: 'Mobile App Development',
 			desc: 'Mobile app designed to help users discover and explore local restaurants and cuisines.',
 			herf: '#'
 		},
 		{
 			id: 2,
-			imgUrl: '/images/blog2.svg',
+			imgUrl: 'images/blog2.svg',
 			title: 'Landing Page Development',
 			desc: 'Promotional landing page for a fitness website Summer Campaign. Form development included.',
 			herf: '#'
@@ -87,7 +87,7 @@ export default function PageHome() {
 
 		{
 			id: 3,
-			imgUrl: '/images/blog3.svg',
+			imgUrl: 'images/blog3.svg',
 			title: 'Landing Page Development',
 			desc: 'Promotional landing page for a fitness website Summer Campaign. Form development included.',
 			herf: '#'
@@ -95,7 +95,7 @@ export default function PageHome() {
 
 		{
 			id: 4,
-			imgUrl: '/images/blog4.svg',
+			imgUrl: 'images/blog4.svg',
 			title: 'E-commerce development',
 			desc: 'Ecommerce website offering access to the latest and greatest gadgets and accessories.',
 			herf: '#'
@@ -103,14 +103,14 @@ export default function PageHome() {
 
 		{
 			id: 5,
-			imgUrl: '/images/blog1.svg',
+			imgUrl: 'images/blog1.svg',
 			title: 'Mobile App Development',
 			desc: 'Mobile app designed to help users discover and explore local restaurants and cuisines.',
 			herf: '#'
 		},
 		{
 			id: 6,
-			imgUrl: '/images/blog2.svg',
+			imgUrl: 'images/blog2.svg',
 			title: 'Landing Page Development',
 			desc: 'Promotional landing page for a fitness website Summer Campaign. Form development included.',
 			herf: '#'
@@ -118,7 +118,7 @@ export default function PageHome() {
 
 		{
 			id: 7,
-			imgUrl: '/images/blog3.svg',
+			imgUrl: 'images/blog3.svg',
 			title: 'Landing Page Development',
 			desc: 'Promotional landing page for a fitness website Summer Campaign. Form development included.',
 			herf: '#'
@@ -154,15 +154,15 @@ export default function PageHome() {
 	const avatars = [
 		{
 			id: 1,
-			url: '/images/avatar1.jpg'
+			url: 'images/avatar1.jpg'
 		},
 		{
 			id: 2,
-			url: '/images/avatar2.jpg'
+			url: 'images/avatar2.jpg'
 		},
 		{
 			id: 3,
-			url: '/images/avatar3.jpg'
+			url: 'images/avatar3.jpg'
 		}
 	]
 
@@ -203,7 +203,7 @@ export default function PageHome() {
 			<HomeBlogList blogs={blogs} />
 			<HomeResume certs={certs} />
 			<HomeFeedBack avatars={avatars} />
-			<HomeClientList2 logos={logos} />
+			<HomeClientListGrayScale logos={logos} />
 			<HomeContract contracts={contracts} formJobs={formJobs} />
 		</>
 	)
