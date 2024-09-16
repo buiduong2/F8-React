@@ -12,18 +12,6 @@ body {
     font-family: "Roboto", system-ui;
 }
 
-/* button[data-id="open-form-btn"] :last-child,
-button[data-id="open-form-btn"] :first-child {
-    display: block;
-} */
-
-/* button[data-id="open-form-btn"] :first-child {
-    display: none;
-} */
-/* 
-button[data-id="open-form-btn"] :last-child {
-    display: block;
-} */
 button[data-id="open-form-btn"].active>*:first-child,
 button[data-id="open-form-btn"]>*:nth-child(2) {
     display: none;

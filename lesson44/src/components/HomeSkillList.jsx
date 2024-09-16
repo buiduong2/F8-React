@@ -6,54 +6,14 @@ import {
 	CardFooter
 } from '@material-tailwind/react'
 
-import {
-	RectangleGroupIcon,
-	FingerPrintIcon,
-	SwatchIcon,
-	HashtagIcon,
-	EyeIcon,
-	DocumentTextIcon
-} from '@heroicons/react/24/solid'
+import PropTypes from 'prop-types'
 
-export default function HomeSkillList() {
-	const skills = [
-		{
-			id: 1,
-			icon: RectangleGroupIcon,
-			title: 'Frontend Web Development:',
-			desc: 'Creating beautiful and functional web experiences is my forte. Using the latest technologies and best practices, I design and build websites that captivate and engage users.'
-		},
-		{
-			id: 2,
-			icon: FingerPrintIcon,
-			title: 'Mobile App Development',
-			desc: 'I specialize in creating responsive and intuitive mobile apps that work seamlessly across iOS & Android devices. From concept to deployment, I handle every stage of the development process.'
-		},
-		{
-			id: 3,
-			icon: SwatchIcon,
-			title: 'Technology Stack',
-			desc: "I'm well-versed in the industry's most popular frontend technologies, including HTML5, CSS3, JavaScript, and frameworks like React and React Native."
-		},
-		{
-			id: 4,
-			icon: HashtagIcon,
-			title: 'Web Optimization',
-			desc: 'Performance matters. I optimize websites and apps for speed, ensuring your users enjoy a fast and responsive experience, which in turn boosts user satisfaction and SEO rankings.'
-		},
-		{
-			id: 5,
-			icon: EyeIcon,
-			title: 'User-Centric Design',
-			desc: 'My development goes hand-in-hand with an eye for design. I create user interfaces that are not only functional but also aesthetically pleasing, providing a seamless and enjoyable user journey.'
-		},
-		{
-			id: 6,
-			icon: DocumentTextIcon,
-			title: 'Testing and Quality Assurance',
-			desc: 'I rigorously test and debug applications to guarantee a bug-free and secure environment for users. Your peace of mind is as important to me as the functionality of your project.'
-		}
-	]
+HomeSkillList.propTypes = {
+	skills: PropTypes.arrayOf(PropTypes.object)
+}
+
+export default function HomeSkillList({skills}) {
+	
 
 	return (
 		<section className="px-8">

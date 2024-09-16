@@ -1,13 +1,13 @@
 import { List, Typography } from '@material-tailwind/react'
-import { PhoneIcon, EnvelopeIcon, TicketIcon } from '@heroicons/react/24/solid'
 import HomeContractForm from './HomeContractForm'
-export default function HomeContract() {
-	const contracts = [
-		{ id: 1, icon: PhoneIcon, label: '+1(424) 535 3523' },
-		{ id: 2, icon: EnvelopeIcon, label: 'hello@mail.com' },
-		{ id: 3, icon: TicketIcon, label: 'Open Support Ticket' }
-	]
+import PropTypes from 'prop-types'
 
+HomeContract.propTypes = {
+	contracts: PropTypes.arrayOf(PropTypes.object),
+	formJobs: PropTypes.arrayOf(PropTypes.object)
+}
+
+export default function HomeContract({ contracts, formJobs }) {
 	return (
 		<section className="px-8 py-16">
 			<div className="flex flex-col items-center text-center">
@@ -25,8 +25,8 @@ export default function HomeContract() {
 				</Typography>
 			</div>
 
-			<div className="container mx-auto grid lg:grid-cols-12 gap-10 rounded-lg p-6 shadow-lg">
-				<div className="col-span-full lg:col-span-5 rounded-lg bg-gray-900 p-16">
+			<div className="container mx-auto grid gap-10 rounded-lg p-6 shadow-lg lg:grid-cols-12">
+				<div className="col-span-full rounded-lg bg-gray-900 p-16 lg:col-span-5">
 					<Typography variant="h4" color="white" className="mb-2">
 						Contact Information
 					</Typography>
@@ -54,7 +54,7 @@ export default function HomeContract() {
 					</List>
 				</div>
 				<div className="col-span-full lg:col-span-7">
-					<HomeContractForm />
+					<HomeContractForm jobs={formJobs} />
 				</div>
 			</div>
 		</section>

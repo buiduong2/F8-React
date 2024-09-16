@@ -1,20 +1,13 @@
 import { Typography } from '@material-tailwind/react'
 
-export default function HomeFeedBack() {
-	const avatars = [
-		{
-			id: 1,
-			url: '/images/avatar1.jpg'
-		},
-		{
-			id: 2,
-			url: '/images/avatar2.jpg'
-		},
-		{
-			id: 3,
-			url: '/images/avatar3.jpg'
-		}
-	]
+import PropTypes from 'prop-types'
+
+HomeFeedBack.propTypes = {
+	avatars: PropTypes.arrayOf(PropTypes.object)
+}
+
+export default function HomeFeedBack({avatars}) {
+	
 
 	function changeAvatar(event) {
 		const avatarSmalls = document.querySelectorAll(
@@ -44,7 +37,7 @@ export default function HomeFeedBack() {
 					</Typography>
 				</div>
 
-				<div className="mx-6 my-14 gap-10 grid lg:grid-cols-2">
+				<div className="mx-6 my-14 gap-10 grid lg:grid-cols-[auto_290px]">
 					<div className="flex flex-col justify-center">
 						<Typography
 							variant="h3"
@@ -98,7 +91,7 @@ export default function HomeFeedBack() {
 							))}
 						</ul>
 					</div>
-					<div className="shrink-0 lg:h-[340px] lg:w-[290px]">
+					<div className="shrink-0 lg:h-[340px]">
 						<img
 							src={avatars[0].url}
 							alt="spotify"

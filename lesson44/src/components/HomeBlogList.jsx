@@ -7,70 +7,14 @@ import {
 	Typography
 } from '@material-tailwind/react'
 
-export default function HomeBlogList() {
-	const blogs = [
-		{
-			id: 1,
-			imgUrl: '/images/blog1.svg',
-			title: 'Mobile App Development',
-			desc: 'Mobile app designed to help users discover and explore local restaurants and cuisines.',
-			herf: '#'
-		},
-		{
-			id: 2,
-			imgUrl: '/images/blog2.svg',
-			title: 'Landing Page Development',
-			desc: 'Promotional landing page for a fitness website Summer Campaign. Form development included.',
-			herf: '#'
-		},
+import PropTypes from 'prop-types'
 
-		{
-			id: 3,
-			imgUrl: '/images/blog3.svg',
-			title: 'Landing Page Development',
-			desc: 'Promotional landing page for a fitness website Summer Campaign. Form development included.',
-			herf: '#'
-		},
+HomeBlogList.propTypes = {
+	blogs: PropTypes.arrayOf(PropTypes.object)
+}
 
-		{
-			id: 4,
-			imgUrl: '/images/blog4.svg',
-			title: 'E-commerce development',
-			desc: 'Ecommerce website offering access to the latest and greatest gadgets and accessories.',
-			herf: '#'
-		},
+export default function HomeBlogList({blogs}) {
 
-		{
-			id: 5,
-			imgUrl: '/images/blog1.svg',
-			title: 'Mobile App Development',
-			desc: 'Mobile app designed to help users discover and explore local restaurants and cuisines.',
-			herf: '#'
-		},
-		{
-			id: 6,
-			imgUrl: '/images/blog2.svg',
-			title: 'Landing Page Development',
-			desc: 'Promotional landing page for a fitness website Summer Campaign. Form development included.',
-			herf: '#'
-		},
-
-		{
-			id: 7,
-			imgUrl: '/images/blog3.svg',
-			title: 'Landing Page Development',
-			desc: 'Promotional landing page for a fitness website Summer Campaign. Form development included.',
-			herf: '#'
-		},
-
-		{
-			id: 8,
-			imgUrl: '/images/blog4.svg',
-			title: 'E-commerce development',
-			desc: 'Ecommerce website offering access to the latest and greatest gadgets and accessories.',
-			herf: '#'
-		}
-	]
 
 	return (
 		<section className="px-8 py-28">

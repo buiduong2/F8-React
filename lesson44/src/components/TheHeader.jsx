@@ -17,7 +17,7 @@ export default function TheHeader() {
 		const navMobile = document.querySelector('[data-id="nav-mobile"]')
 		navMobile.classList.toggle('max-h-96')
 		navMobile.classList.toggle('max-h-0')
-	}
+	} 
 
 	const NavList = (
 		<ul className="flex gap-8 lg-max:flex-col lg-max:gap-4">

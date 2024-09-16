@@ -5,34 +5,15 @@ import {
 	Textarea,
 	Typography
 } from '@material-tailwind/react'
+import PropTypes from 'prop-types'
 
-export default function HomeContractForm() {
-	const jobs = [
-		{
-			id: 1,
-			label: 'Design',
-			value: '1'
-		},
-		{
-			id: 2,
-			label: 'Development',
-			value: '2'
-		},
-		{
-			id: 3,
-			label: 'Support',
-			value: '3'
-		},
-		{
-			id: 4,
-			label: 'Other',
-			value: '0'
-		}
-	]
-
+HomeContractForm.propTypes = {
+	jobs: PropTypes.arrayOf(PropTypes.object)
+}
+export default function HomeContractForm({ jobs }) {
 	return (
-		<form action="POST" className="lg:px-10 px-5 py-5">
-			<div className="mb-8 flex lg:flex-row flex-col gap-4">
+		<form action="POST" className="px-5 py-5 lg:px-10">
+			<div className="mb-8 flex flex-col gap-4 lg:flex-row">
 				<Input
 					variant="static"
 					label="First Name"
@@ -83,7 +64,7 @@ export default function HomeContractForm() {
 			</div>
 
 			<div className="text-end">
-				<Button className='w-full md:w-auto'>SEND MESSAGE</Button>
+				<Button className="w-full md:w-auto">SEND MESSAGE</Button>
 			</div>
 		</form>
 	)

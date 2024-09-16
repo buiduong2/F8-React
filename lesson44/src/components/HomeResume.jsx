@@ -1,35 +1,20 @@
 import {
+	ArrowRightIcon
+} from '@heroicons/react/24/solid'
+import {
 	Button,
 	Card,
 	CardBody,
 	CardHeader,
 	Typography
 } from '@material-tailwind/react'
-import {
-	ArrowRightIcon,
-	ChartBarIcon,
-	PuzzlePieceIcon,
-	CursorArrowRaysIcon
-} from '@heroicons/react/24/solid'
+import PropTypes from 'prop-types'
 
-export default function HomeResume() {
-	const certs = [
-		{
-			id: 1,
-			label: 'Bachelor of Science in Computer Science',
-			icon: ChartBarIcon
-		},
-		{
-			id: 2,
-			label: 'Certified Web Developer',
-			icon: PuzzlePieceIcon
-		},
-		{
-			id: 3,
-			label: 'Frontend Framework Proficiency Certification',
-			icon: CursorArrowRaysIcon
-		}
-	]
+HomeResume.propTypes = {
+	certs: PropTypes.arrayOf(PropTypes.object)
+}
+
+export default function HomeResume({certs}) {
 
 	return (
 		<section className="mx-8 my-24">
