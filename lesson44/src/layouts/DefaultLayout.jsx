@@ -16,7 +16,7 @@ export default function DefaultLayout({ children }) {
 						className="bg-white !fixed bottom-4 right-4 z-40 flex items-center gap-1 p-2 pr-4 shadow-lg hover:bg-white hover:shadow-xl"
 					>
 						<img
-							src="/logos/favicon.png"
+							src="logos/favicon.png"
 							alt="Metarial Tailwind"
 							className="size-5"
 						/>
