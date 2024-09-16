@@ -70,7 +70,8 @@ export default function HomeSkillList() {
 				</Typography>
 				<Typography
 					variant="lead"
-					className="mx-auto w-4/6 font-normal text-gray-500"
+					color="gray"
+					className="mx-auto w-4/6"
 				>
 					I&rsquo;m not just a developer; I&rsquo;m a digital
 					dreamweaver. Crafting immersive online experiences is not
@@ -97,7 +98,10 @@ export default function HomeSkillList() {
 							</Typography>
 						</CardBody>
 						<CardFooter className="px-8 py-0">
-							<Typography className="text-center font-normal text-gray-500">
+							<Typography
+								color="gray"
+								className="text-center"
+							>
 								{skill.desc}
 							</Typography>
 						</CardFooter>

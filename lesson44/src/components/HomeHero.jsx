@@ -6,12 +6,13 @@ export default function HomeHero() {
 			<div className="w-1/2">
 				<Typography
 					variant="h1"
+					color="blue-gray"
 					className="mb-4 text-5xl leading-tight"
 				>
 					Welcome to my Web <br />
 					Development Portofolio!
 				</Typography>
-				<Typography className="mb-4 pr-28 text-xl font-normal leading-8 text-gray-500">
+				<Typography variant="lead" className="mb-4 pr-28" color="gray">
 					I&apos;m Lily Smith, a passionate web developer based in
 					USA. Here, you&apos;ll get a glimpse of my journey in the
 					world of web development, where creativity meets
@@ -19,7 +20,7 @@ export default function HomeHero() {
 				</Typography>
 
 				<form action="POST">
-					<Typography as="label" className="mb-2 text-sm font-normal">
+					<Typography as="label"  variant="paragraph" className="mb-2 text-sm">
 						Your email
 					</Typography>
 					<div className="flex gap-4 pr-28">
@@ -35,7 +36,9 @@ export default function HomeHero() {
 
 					<Typography
 						as="p"
-						className="mt-2 text-sm font-normal text-gray-500"
+						color="gray"
+						variant='paragraph'
+						className="mt-2 text-sm"
 					>
 						Read my{' '}
 						<a href="#" className="underline">

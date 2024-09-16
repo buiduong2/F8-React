@@ -1,7 +1,11 @@
 import HomeClientList from '../components/HomeClientList'
 import HomeHero from '../components/HomeHero'
-import HomeProjectList from '../components/HomeProjectList'
+import HomeBlogList from '../components/HomeBlogList'
 import HomeSkillList from '../components/HomeSkillList'
+import HomeResume from '../components/HomeResume'
+import HomeFeedBack from '../components/HomeFeedBack'
+import HomeClientList2 from '../components/HomeClientList2'
+import HomeContract from '../components/HomeContract'
 
 export default function PageHome() {
 	return (
@@ -9,7 +13,11 @@ export default function PageHome() {
 			<HomeHero />
 			<HomeClientList />
 			<HomeSkillList />
-			<HomeProjectList />
+			<HomeBlogList />
+			<HomeResume />
+			<HomeFeedBack />
+			<HomeClientList2 />
+			<HomeContract />
 		</>
 	)
 }

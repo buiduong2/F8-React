@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            display: flex;
+            align-items: stretch;
+            /* Đảm bảo các phần tử con có chiều cao tối đa giống nhau */
+        }
+
+        .left-column {
+            flex: 1;
+            /* Chiếm không gian có sẵn */
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+        .right-column {
+            flex: 1;
+            /* Chiếm không gian có sẵn */
+            display: flex;
+            align-items: center;
+            /* Canh giữa hình ảnh theo chiều dọc nếu cần */
+            padding: 10px;
+            background-color: #e0e0e0;
+        }
+
+        .right-column img {
+            max-width: 100%;
+            height: auto;
+            /* Đảm bảo hình ảnh không vượt quá kích thước cột */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-column">
+            <p>This is some text that can vary in length. The height of this column determines the maximum height of the
+                image column.</p>
+        </div>
+        <div class="right-column">
+            <img src="./public/images/avatar1.jpg" alt="Description of the image">
+        </div>
+    </div>
+</body>
+
+</html>

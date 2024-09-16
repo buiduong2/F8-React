@@ -6,9 +6,9 @@ import {
 } from '@heroicons/react/24/solid'
 export default function TheHeader() {
 	return (
-		<header className="bg-white bg-opacity-80 p-4 backdrop-blur-md fixed inset-x-0 top-0 z-50">
+		<header className="fixed inset-x-0 top-0 z-50 bg-white bg-opacity-80 p-4 backdrop-blur-md">
 			<div className="container mx-auto flex items-center justify-between">
-				<Typography variant="h6" className="text-lg">
+				<Typography variant="h6" color="blue-gray" className="text-lg">
 					Material Tailwind
 				</Typography>
 				<nav>
@@ -16,7 +16,7 @@ export default function TheHeader() {
 						<li>
 							<Typography
 								as="a"
-								className="flex items-center gap-2 font-normal text-gray-900"
+								className="flex items-center gap-2 text-gray-900"
 								href="#"
 							>
 								<RectangleStackIcon className="size-5" /> Page
@@ -25,16 +25,16 @@ export default function TheHeader() {
 						<li>
 							<Typography
 								as="a"
-								className="flex items-center gap-2 font-normal text-gray-900"
+								className="flex items-center gap-2 text-gray-900"
 								href="#"
 							>
-								<UserCircleIcon className="size-5" /> Page
+								<UserCircleIcon className="size-5" /> Account
 							</Typography>
 						</li>
 						<li>
 							<Typography
 								as="a"
-								className="flex items-center gap-2 font-normal text-gray-900"
+								className="flex items-center gap-2 text-gray-900"
 								href="#"
 							>
 								<CommandLineIcon className="size-5" /> Docs
