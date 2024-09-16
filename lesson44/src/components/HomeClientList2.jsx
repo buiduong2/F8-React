@@ -10,22 +10,24 @@ export default function HomeClientList2() {
 		'logo-netflix.svg'
 	]
 	return (
-		<section className="container mx-8 my-20">
-			<div className="text-center mb-8">
-				<Typography variant="h6" color="gray" className="mb-4">
-					POPULAR CLIENTS
-				</Typography>
-				<Typography variant="h2" color="blue-gray">
-					Trusted by over 10,000+ <br /> clients
-				</Typography>
-			</div>
+		<section className="mx-8 my-20">
+			<div className="container mx-auto">
+				<div className="mb-8 text-center">
+					<Typography variant="h6" color="gray" className="mb-4">
+						POPULAR CLIENTS
+					</Typography>
+					<Typography variant="h2" color="blue-gray">
+						Trusted by over 10,000+ <br /> clients
+					</Typography>
+				</div>
 
-			<div className="flex items-center justify-center gap-6 grayscale">
-				{logos.map((logo, index) => (
-					<div key={index} className="w-40">
-						<img src={`/logos/${logo}`} />
-					</div>
-				))}
+				<div className="flex flex-wrap items-center justify-center gap-6 grayscale">
+					{logos.map((logo, index) => (
+						<div key={index} className="w-40">
+							<img src={`/logos/${logo}`} />
+						</div>
+					))}
+				</div>
 			</div>
 		</section>
 	)

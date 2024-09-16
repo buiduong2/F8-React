@@ -31,14 +31,14 @@ export default function HomeContractForm() {
 	]
 
 	return (
-		<form action="POST" className="px-10 py-5">
-			<div className="mb-8 flex gap-4">
+		<form action="POST" className="lg:px-10 px-5 py-5">
+			<div className="mb-8 flex lg:flex-row flex-col gap-4">
 				<Input
 					variant="static"
 					label="First Name"
 					placeholder="eg.Lucas"
 					name="firstName"
-					className="w-1/2"
+					className="lg:w-1/2"
 					type="text"
 				/>
 				<Input
@@ -83,7 +83,7 @@ export default function HomeContractForm() {
 			</div>
 
 			<div className="text-end">
-				<Button>SEND MESSAGE</Button>
+				<Button className='w-full md:w-auto'>SEND MESSAGE</Button>
 			</div>
 		</form>
 	)

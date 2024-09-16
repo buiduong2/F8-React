@@ -17,7 +17,7 @@ export default function HomeContract() {
 				<Typography
 					variant="lead"
 					color="gray"
-					className="mb-20 w-5/12"
+					className="mb-20 lg:w-5/12"
 				>
 					Ready to get started? Feel free to reach out through the
 					contact form, and let&rsquo;s embark on a journey of
@@ -25,8 +25,8 @@ export default function HomeContract() {
 				</Typography>
 			</div>
 
-			<div className="container mx-auto flex gap-10 rounded-lg p-6 shadow-lg">
-				<div className="w-5/12 rounded-lg bg-gray-900 p-16">
+			<div className="container mx-auto grid lg:grid-cols-12 gap-10 rounded-lg p-6 shadow-lg">
+				<div className="col-span-full lg:col-span-5 rounded-lg bg-gray-900 p-16">
 					<Typography variant="h4" color="white" className="mb-2">
 						Contact Information
 					</Typography>
@@ -53,7 +53,7 @@ export default function HomeContract() {
 						))}
 					</List>
 				</div>
-				<div className='w-7/12'>
+				<div className="col-span-full lg:col-span-7">
 					<HomeContractForm />
 				</div>
 			</div>

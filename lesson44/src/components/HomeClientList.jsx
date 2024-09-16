@@ -20,7 +20,7 @@ export default function HomeClientList() {
 				My awesome clients
 			</Typography>
 
-			<div className="flex items-center justify-center gap-6">
+			<div className="flex items-center justify-center flex-wrap gap-6">
 				{logos.map((logo, index) => (
 					<div key={index}  className='w-40'>
 						<img src={`/logos/${logo}`} />
