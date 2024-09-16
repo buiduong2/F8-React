@@ -19,7 +19,6 @@ export default function HomeContractForm({ jobs }) {
 					label="First Name"
 					placeholder="eg.Lucas"
 					name="firstName"
-					className="lg:w-1/2"
 					type="text"
 				/>
 				<Input
