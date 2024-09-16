@@ -71,8 +71,8 @@ export default function TheHeader() {
 						data-id="open-form-btn"
 						className="flex size-10 items-center justify-center p-0"
 					>
-						<XMarkIcon className="size-6" />
 						<Bars4Icon className="size-6" />
+						<XMarkIcon className="size-6" />
 					</Button>
 				</div>
 			</div>
