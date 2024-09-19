@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind utilities;
+
+@layer utilities{
+    .transition-width {
+        transition: width linear;
+    }
+
+
+    @for $i from 1 through 10 {
+        .animation-slide-left-#{$i*100} {
+            animation: slide-left ease-in-out #{$i*100}ms forwards;
+        }
+
+        .animation-side-right-shrink-#{$i*100} {
+            animation: side-right-shrink ease-in-out #{$i*100}ms forwards;
+        }
+
+    }
+
+    .animation-reduce-width-to-zero {
+        animation: reduce-width-to-zero linear forwards;
+    }
+
+
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+
+    }
+}
+
+@keyframes side-right-shrink {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+
+    }
+
+    50% {
+        transform: translateX(100%);
+        opacity: 0;
+        max-height: 500px;
+    }
+
+    100% {
+        max-height: 0px;
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+
+@keyframes reduce-width-to-zero {
+    0% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0
+    }
+
+}
