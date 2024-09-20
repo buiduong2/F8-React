@@ -65,21 +65,21 @@ function NotificationListItem({ data, onClick, onDelete }) {
 	const [mode, setMode] = useState(lifeCycle.CREATED)
 
 	useEffect(() => {
-		const timeoutIds = []
+		let timeoutId
 		switch (mode) {
 			case lifeCycle.CREATED:
-				timeoutIds.push(setTimerToBeforeDestroy())
+				timeoutId = setTimerToBeforeDestroy()
 				break
 			case lifeCycle.BEFORE_DESTROY:
-				timeoutIds.push(setTimerToDestroyed())
+				timeoutId = setTimerToDestroyed()
 				break
 			case lifeCycle.DESTROYED:
 				onDelete(data._id)
-				data.onDelete?.();
+				data.onDelete?.()
 				break
 		}
 
-		return () => timeoutIds.forEach(clearTimeout)
+		return () => clearTimeout(timeoutId)
 	}, [mode])
 
 	function getElements() {
