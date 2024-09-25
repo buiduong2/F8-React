@@ -27,6 +27,13 @@ const variants = {
 		background: 'bg-green-500',
 		hover: 'hover:bg-green-700',
 		shadow: 'shadow-green-500/30'
+	},
+
+	text: {
+		color: 'text-white',
+		hover: 'hover:bg-white/10',
+		active: 'active:bg-white/30',
+		border: 'border'
 	}
 }
 

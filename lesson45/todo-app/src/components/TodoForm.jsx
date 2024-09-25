@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
-import AppInput from './AppInput'
-import AppButton from './AppButton'
 import { useState } from 'react'
+import useNotification from '../hooks/useNotification'
+import AppButton from './AppButton'
+import AppInput from './AppInput'
 TodoForm.propTypes = {
-	onSubmit: PropTypes.func,
-	addNotification: PropTypes.func
+	onSubmit: PropTypes.func
 }
-function TodoForm({ onSubmit, addNotification, ...rest }) {
+function TodoForm({ onSubmit, ...rest }) {
+	const { addNotification } = useNotification()
 	const [isLoading, setIsLoading] = useState(false)
 
 	async function handlSubmit(e) {
