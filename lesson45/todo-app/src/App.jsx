@@ -36,7 +36,7 @@ function AppInner() {
 		authInit()
 	}, [])
 
-	const [activeModal, setActiveModal] = useState(false)
+	const [activeModal, setActiveModal] = useState(!isAuthenticated())
 	const { currentTab } = useTabStore()
 
 	function handleClick(e) {
