@@ -1,11 +1,11 @@
-import { createContext, useContext } from 'react';
-import { setAddNotificationFn } from '../utils/api';
+import { createContext, useContext } from 'react'
+import { setAddNotificationFn } from '../utils/index'
 let count = 1
 
 export const NotificationContext = createContext([])
 
-export default function useNotification() {
-	const { notifications, setNotifications } = useContext(NotificationContext);
+export default function useNotificationStore() {
+	const { notifications, setNotifications } = useContext(NotificationContext)
 	setAddNotificationFn(addNotification)
 
 	function addNotification(notification) {

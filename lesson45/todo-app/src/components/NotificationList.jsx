@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import NotificationListItem from './NotificationListItem'
-import useNotification from '../hooks/useNotification'
+import useNotificationStore from '../store/useNotificationStore'
 
 NotificationList.propTypes = {
 	notifications: PropTypes.array,
@@ -8,7 +8,7 @@ NotificationList.propTypes = {
 }
 
 function NotificationList() {
-	const { notifications, deleteNotification } = useNotification()
+	const { notifications, deleteNotification } = useNotificationStore()
 
 	return (
 		<ul className="fixed right-4 top-4 z-50 flex w-80 flex-col gap-4 transition-all">

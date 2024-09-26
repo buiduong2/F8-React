@@ -6,7 +6,7 @@ import {
 } from '../utils/api'
 import { useState } from 'react'
 
-export default function useTodo() {
+export default function useTodoStore() {
 	const [todos, setTodos] = useState([])
 
 	async function addTodo(content) {
@@ -26,8 +26,8 @@ export default function useTodo() {
 		setTodos(prevTodos => prevTodos.filter(todo => todo._id != id))
 	}
 
-	async function initTodo() {
-		setTodos(await fetchTodos())
+	async function initTodo(q) {
+		setTodos(await fetchTodos(q))
 	}
 
 	async function clearTodo() {

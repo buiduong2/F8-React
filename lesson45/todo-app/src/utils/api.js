@@ -1,21 +1,27 @@
 import axios from 'axios'
+import { addNotification, createDeferred } from '.'
 
-let apiUrl = null
-let email = null
-let apiKey = null
+let apiKeyDeferred = createDeferred()
 let apiClient = null
+let apiKey = apiKeyDeferred.promise
+let handleUnauthorize
 
-let addNotification = function () {}
+export function setApiKey(key) {
+	apiKeyDeferred.resolve(key)
+}
 
-export function setAddNotificationFn(fn) {
-	addNotification = fn
+export function setUnautorizeHandle(fn) {
+	handleUnauthorize = fn
+}
+
+export function removeCurrentApiKey() {
+	apiKeyDeferred = createDeferred()
+	apiKey = apiKeyDeferred.promise
 }
 
 export function createApi(options) {
-	apiUrl = options.apiUrl
-	email = options.email
 	apiClient = axios.create({
-		baseURL: apiUrl,
+		baseURL: options.apiUrl,
 		timeout: 3000,
 		headers: {
 			'Content-Type': 'application/json'
@@ -39,7 +45,7 @@ export function createApi(options) {
 				})
 			} else if (url === '/api-key') {
 				addNotification({
-					content: 'Đăng nhập thành cộng',
+					content: 'Đăng nhập thành công',
 					type: 'info'
 				})
 			} else {
@@ -51,32 +57,36 @@ export function createApi(options) {
 			return res
 		},
 		error => {
-			if (error.response.data.message) {
-				addNotification({
-					content: error.response.data.message,
-					type: 'error'
-				})
+			if (error.response?.data.message) {
+				if (error.response.data.code === 401) {
+					handleUnauthorize?.()
+				} else {
+					addNotification({
+						content: error.response.data.message,
+						type: 'error'
+					})
+				}
 			}
 			return Promise.reject(error)
 		}
 	)
+
+	return apiClient
 }
 
-export function getApiKey() {
-	async function inner() {
-		const res = await apiClient.get('/api-key', {
-			params: {
-				email: email
-			}
-		})
-		return res.data.data.apiKey
+export async function getApiKey(email) {
+	const res = await apiClient.get('/api-key', {
+		params: { email }
+	})
+	return res.data.data.apiKey
+}
+
+export async function getTodos(q) {
+	const options = {}
+	if (q) {
+		options.params = { q }
 	}
-
-	apiKey = inner()
-}
-
-export async function getTodos() {
-	const res = await apiClient.get('/todos')
+	const res = await apiClient.get('/todos', options)
 	const data = res.data
 	return data.data.listTodo
 }

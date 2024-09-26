@@ -3,19 +3,25 @@ import { useEffect, useState } from 'react'
 import TodoForm from '../components/TodoForm'
 import TodoListLoading from '../components/TodoListLoading'
 import TodoList from '../components/TodoList'
-import useTodo from '../hooks/useTodo'
-import useNotification from '../hooks/useNotification'
+import useTodoStore from '../store/useTodoStore'
+import useNotificationStore from '../store/useNotificationStore'
+import useTabStore from '../store/useTabStore'
+import useDebounce from '../hooks/useDebounce'
 
 function Todo() {
 	const { todos, addTodo, deleteTodo, editTodo, initTodo, clearTodo } =
-		useTodo()
-	const { addNotification } = useNotification()
-	const [isLoading, setIsLoading] = useState(true)
+		useTodoStore()
+	const { addNotification } = useNotificationStore()
+	const [isLoading, setIsLoading] = useState(false)
 	const [isAddingNewTodo, setIsAddingNewTodo] = useState(false)
+	const { currentTab } = useTabStore()
+	const debouncedSearchTodo = useDebounce(searchTodo, 1000)
 
 	useEffect(() => {
-		setIsLoading(true)
-		initTodo().finally(() => setIsLoading(false))
+		if (currentTab === 'TodoList') {
+			setIsLoading(true)
+			initTodo().finally(() => setIsLoading(false))
+		}
 
 		return clearTodo
 	}, [])
@@ -41,16 +47,35 @@ function Todo() {
 		})
 	}
 
-	function handleAddTodo(content) {
-		setIsAddingNewTodo(true)
-		addTodo(content).finally(() => setIsAddingNewTodo(false))
+	async function handleSubmit(content) {
+		if (currentTab === 'TodoList') {
+			setIsAddingNewTodo(true)
+			await addTodo(content).finally(() => setIsAddingNewTodo(false))
+		} else if (currentTab === 'TodoSearch') {
+			setIsLoading(true)
+			await debouncedSearchTodo.invokeImmediately(content)
+		}
+	}
+
+	function handleFormValueUpdate(value) {
+		if (currentTab === 'TodoSearch') {
+			setIsLoading(true)
+			debouncedSearchTodo.invoke(value)
+		}
+	}
+
+	async function searchTodo(q) {
+		await initTodo(q)
+		setIsLoading(false)
 	}
 
 	return (
 		<div className="">
 			<TodoForm
 				className="mx-auto mb-8 w-[80%]"
-				onSubmit={handleAddTodo}
+				onSubmit={handleSubmit}
+				onUpdateValue={handleFormValueUpdate}
+				type={currentTab === 'TodoList' ? 'add' : 'search'}
 			/>
 			{isLoading ? (
 				<TodoListLoading />
