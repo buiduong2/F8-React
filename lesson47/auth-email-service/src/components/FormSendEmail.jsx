@@ -97,6 +97,7 @@ export default function FormSendEmail() {
 								label="Your Name"
 								name="from_name"
 								placeholder="John Doe"
+								required
 							/>
 							<Input
 								onChange={handleOnChangeInput}
@@ -105,12 +106,14 @@ export default function FormSendEmail() {
 								size="lg"
 								label="Send To"
 								placeholder="email@email.com"
+								required
 							/>
 							<Textarea
 								onChange={handleOnChangeInput}
 								name="message"
 								size="lg"
 								label="Message"
+								required
 							/>
 						</div>
 						<Button type="submit" loading={loading}>
