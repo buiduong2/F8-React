@@ -18,11 +18,11 @@
 		"name": "Column 2",
 		"rows": [
 			{
-				"id": 1,
+				"id": 3,
 				"content": "Task 1"
 			},
 			{
-				"id": 2,
+				"id": 4,
 				"content": "Task 2"
 			}
 		]

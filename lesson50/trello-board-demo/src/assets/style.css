@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.col-ghost > *,
+.task-ghost {
+	position: relative;
+}
+
+.col-ghost > *:after,
+.task-ghost:after {
+	content: '';
+	@apply absolute inset-0 z-50 block rounded-lg;
+}
+
+.task-ghost:after {
+	@apply bg-slate-300;
+}
+
+.col-ghost > * > * {
+	visibility: hidden;
+}
+
+.col-ghost > *:after {
+	@apply bg-pink-700/80;
+}
+
+.dragging {
+	opacity: 1; /* Đảm bảo phần tử đang kéo không bị mờ */
+	transition: none; /* Bỏ qua hiệu ứng chuyển động khi đang kéo */
+}

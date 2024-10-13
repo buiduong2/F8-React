@@ -61,6 +61,7 @@ export default function FormAdd({ onSubmit, onClose, title, ...rest }) {
 			{...rest}
 		>
 			<AppTextarea
+				editing={true}
 				ref={textarea}
 				className="p-2"
 				placeholder="Mời nhập nội dung"

@@ -15,7 +15,12 @@ export const boardSlice = createSlice({
 			state.columns.push({
 				id: uuidv4(),
 				name: columnName,
-				rows: []
+				rows: [
+					{
+						id: uuidv4(),
+						content: 'New Task'
+					}
+				]
 			})
 		},
 
@@ -46,6 +51,27 @@ export const boardSlice = createSlice({
 		removeTask: (state, { payload }) => {
 			const { columnIndex, taskIndex } = payload
 			state.columns[columnIndex].rows.splice(taskIndex, 1)
+		},
+
+		moveColumn: (state, { payload }) => {
+			const { fromColumnIndex, toColumnIndex } = payload
+			let temp = state.columns[fromColumnIndex]
+
+			state.columns[fromColumnIndex] = state.columns[toColumnIndex]
+			state.columns[toColumnIndex] = temp
+		},
+
+		moveTask: (state, { payload }) => {
+			const {
+				fromColumnIndex,
+				toColumnIndex,
+				fromTaskIndex,
+				toTaskIndex
+			} = payload
+
+			const task = state.columns[fromColumnIndex].rows[fromTaskIndex]
+			state.columns[fromColumnIndex].rows.splice(fromTaskIndex, 1)
+			state.columns[toColumnIndex].rows.splice(toTaskIndex, 0, task)
 		}
 	}
 })
@@ -56,7 +82,9 @@ export const {
 	editColumn,
 	editTask,
 	removeColumn,
-	removeTask
+	removeTask,
+	moveColumn,
+	moveTask
 } = boardSlice.actions
 
 export default boardSlice.reducer
