@@ -1,44 +1,31 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import useSortable from '../hooks/useSortable'
+import { addColumn, moveColumn } from '../redux/boardSlice'
+import FormAdd from './AppForm'
 import BoardAddColumnBtn from './BoardAddBtn'
 import Column from './BoardColumn'
-import FormAdd from './AppForm'
-import { useDispatch, useSelector } from 'react-redux'
-import { addColumn, moveColumn } from '../redux/boardSlice'
-import SortableMin from 'sortablejs'
 
 export default function Board() {
 	const [isAddingColumn, setIsAddingColumn] = useState(false)
-	const ref = useRef()
 
 	const columns = useSelector(state => state.board.columns)
 	const dispatch = useDispatch()
 
+	const handleMoveColumn = useRef(evt =>
+		dispatch(
+			moveColumn({
+				fromColumnIndex: evt.oldIndex,
+				toColumnIndex: evt.newIndex
+			})
+		)
+	)
+
+	const ref = useSortable('col', handleMoveColumn.current)
+
 	function handleAddColumn(columnName) {
 		dispatch(addColumn({ columnName }))
 	}
-
-	useEffect(() => {
-		const sortable = new SortableMin(ref.current, {
-			group: 'col',
-			animation: 150,
-			delay: 10,
-			handle: '.draggable',
-			ghostClass: "col-ghost",
-			onEnd: function (evt) {
-				const fromColumnIndex = evt.oldIndex
-				const toColumnIndex = evt.newIndex
-				evt.from.insertBefore(evt.item, evt.from.children[evt.oldIndex])
-
-				dispatch(
-					moveColumn({
-						fromColumnIndex,
-						toColumnIndex
-					})
-				)
-			}
-		})
-		return () => sortable.destroy()
-	}, [])
 
 	return (
 		<div className="mb-10 flex h-[87%] gap-4 overflow-x-auto pl-8 scrollbar scrollbar-track-[#9C446E] scrollbar-thumb-[#ce94b0]">

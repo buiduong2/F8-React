@@ -24,8 +24,3 @@
 .col-ghost > *:after {
 	@apply bg-pink-700/80;
 }
-
-.dragging {
-	opacity: 1; /* Đảm bảo phần tử đang kéo không bị mờ */
-	transition: none; /* Bỏ qua hiệu ứng chuyển động khi đang kéo */
-}
