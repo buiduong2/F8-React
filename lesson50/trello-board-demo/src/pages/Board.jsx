@@ -2,9 +2,9 @@ import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useSortable from '../hooks/useSortable'
 import { addColumn, moveColumn } from '../redux/boardSlice'
-import FormAdd from './AppForm'
-import BoardAddColumnBtn from './BoardAddBtn'
-import Column from './BoardColumn'
+import FormAdd from '../components/AppForm'
+import BoardAddColumnBtn from '../components/BoardAddBtn'
+import Column from '../components/BoardColumn'
 
 export default function Board() {
 	const [isAddingColumn, setIsAddingColumn] = useState(false)

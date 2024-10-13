@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
-import columns from '../db.json'
-
+import { updateData } from '../utils/httpClient'
+import { debounce } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
 const initialState = {
-	columns: columns
+	columns: []
 }
 
 export const boardSlice = createSlice({
 	name: 'board',
 	initialState,
 	reducers: {
+		setColumns(state, { payload }) {
+			state.columns = payload.columns
+		},
+
 		addColumn: (state, { payload }) => {
 			const { columnName } = payload
 			state.columns.push({
@@ -77,6 +81,7 @@ export const boardSlice = createSlice({
 })
 
 export const {
+	setColumns,
 	addColumn,
 	addTask,
 	editColumn,
@@ -88,3 +93,14 @@ export const {
 } = boardSlice.actions
 
 export default boardSlice.reducer
+
+const debouncedUpdateData = debounce(updateData, 2000, { maxWait: 5000 })
+
+export const boardMiddleware = store => next => action => {
+	const result = next(action)
+	const { type } = action
+	if (type.startsWith('board')) {
+		debouncedUpdateData(store.getState().board.columns)
+	}
+	return result
+}
