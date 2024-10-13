@@ -1,0 +1,30 @@
+[
+	{
+		"id": "columnId1",
+		"name": "ColumnName",
+		"rows": [
+			{
+				"id": 1,
+				"content": "Task 1"
+			},
+			{
+				"id": 2,
+				"content": "Task 2"
+			}
+		]
+	},
+	{
+		"id": "columnId2",
+		"name": "Column 2",
+		"rows": [
+			{
+				"id": 1,
+				"content": "Task 1"
+			},
+			{
+				"id": 2,
+				"content": "Task 2"
+			}
+		]
+	}
+]
