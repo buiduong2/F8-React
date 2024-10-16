@@ -1,15 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { updateData } from '../utils/httpClient'
 import { debounce } from 'lodash'
+import { createError } from './errorSlice'
 import { v4 as uuidv4 } from 'uuid'
+
 const initialState = {
-	columns: []
+	columns: [],
+	status: 'idle'
 }
 
 export const boardSlice = createSlice({
 	name: 'board',
 	initialState,
 	reducers: {
+		setStatus(state, { payload }) {
+			state.status = payload.status
+		},
 		setColumns(state, { payload }) {
 			state.columns = payload.columns
 		},
@@ -89,18 +95,45 @@ export const {
 	removeColumn,
 	removeTask,
 	moveColumn,
-	moveTask
+	moveTask,
+	setStatus
 } = boardSlice.actions
 
 export default boardSlice.reducer
 
-const debouncedUpdateData = debounce(updateData, 2000, { maxWait: 5000 })
+const debouncedUpdateData = debounce(
+	async (columns, store) => {
+		try {
+			store.dispatch(setStatus({ status: 'loading' }))
+			await updateData(columns)
+		} catch (error) {
+			if (error?.response?.data.code === 401) {
+				store.dispatch(
+					createError({
+						type: 'auth',
+						code: 401
+					})
+				)
+			}
+		} finally {
+			store.dispatch(setStatus({ status: 'idle' }))
+		}
+	},
+	500,
+	{
+		maxWait: 5000,
+	}
+)
 
 export const boardMiddleware = store => next => action => {
 	const result = next(action)
 	const { type } = action
-	if (type.startsWith('board')) {
-		debouncedUpdateData(store.getState().board.columns)
+	if (
+		type.startsWith('board') &&
+		type !== 'board/setColumns' &&
+		type !== 'board/setStatus'
+	) {
+		debouncedUpdateData(store.getState().board.columns, store)
 	}
 	return result
 }

@@ -16,6 +16,7 @@ function AppTextarea({ className, editing = false, ...rest }, ref) {
 		if (isEditing && !editing) {
 			const el = localRef.current
 			el.focus()
+			el.select();
 
 			function autoReize() {
 				el.style.height = 'auto'

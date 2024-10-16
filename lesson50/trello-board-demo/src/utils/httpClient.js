@@ -18,30 +18,39 @@ export function login(email) {
 }
 
 export async function getData() {
-	const res = await client.get('/tasks')
+	try {
+		const res = await client.get('/tasks')
+		const data = res.data
+		if (data.code === 200) {
+			const isValid = validateData(data)
+			if (!isValid) return { code: 400 }
 
-	const data = res.data
-	if (data.code === 200) {
-		const isValid = validateData(data)
-		if (!isValid) return { code: 400 }
-
-		const tasks = extractToTasks(data)
-		const columns = extractToColumns(data)
-		console.log(mergeToColumns(columns, tasks))
-		return {
-			code: 200,
-			data: mergeToColumns(columns, tasks)
+			const tasks = extractToTasks(data)
+			const columns = extractToColumns(data)
+			return {
+				code: 200,
+				data: mergeToColumns(columns, tasks)
+			}
 		}
-	}
 
-	return {
-		code: 403
+		return {
+			code: 403
+		}
+	} catch (error) {
+		if (error.response.data) {
+			const response = error.response.data
+			if (response.code) {
+				return response
+			} else {
+				throw error
+			}
+		}
 	}
 }
 
 export function updateData(columns) {
 	const data = flatColumn(columns)
-	return 	client.post('/tasks', data)
+	return client.post('/tasks', data)
 }
 
 function flatColumn(columns) {

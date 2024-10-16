@@ -1,25 +1,29 @@
 import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import useSortable from '../hooks/useSortable'
-import { addColumn, moveColumn } from '../redux/boardSlice'
 import FormAdd from '../components/AppForm'
 import BoardAddColumnBtn from '../components/BoardAddBtn'
 import Column from '../components/BoardColumn'
+import useSortable from '../hooks/useSortable'
+import { addColumn, moveColumn } from '../redux/boardSlice'
+import useErrorCofirm from '../hooks/useErrorConfirm'
+import BoardLoading from '../components/BoardLoading'
 
 export default function Board() {
 	const [isAddingColumn, setIsAddingColumn] = useState(false)
 
-	const columns = useSelector(state => state.board.columns)
 	const dispatch = useDispatch()
+	useErrorCofirm()
+	const columns = useSelector(state => state.board.columns)
 
-	const handleMoveColumn = useRef(evt =>
+	const handleMoveColumn = useRef(evt => {
+		if (evt.oldIndex === evt.newIndex) return
 		dispatch(
 			moveColumn({
 				fromColumnIndex: evt.oldIndex,
 				toColumnIndex: evt.newIndex
 			})
 		)
-	)
+	})
 
 	const ref = useSortable('col', handleMoveColumn.current)
 
@@ -48,6 +52,9 @@ export default function Board() {
 						onClick={() => setIsAddingColumn(true)}
 					/>
 				)}
+			</div>
+			<div>
+				<BoardLoading />
 			</div>
 		</div>
 	)

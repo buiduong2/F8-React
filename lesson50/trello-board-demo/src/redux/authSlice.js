@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { setAuthApi, logout } from '../utils/httpClient'
+import { logout, setAuthApi } from '../utils/httpClient'
 
 const initialState = {
 	email: null,
@@ -12,7 +12,6 @@ export const authSlice = createSlice({
 	initialState,
 	reducers: {
 		init(state) {
-
 			if (state.apiKey) {
 				state.isAuthenticated = true
 				setAuthApi(state.apiKey)

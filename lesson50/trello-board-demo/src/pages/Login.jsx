@@ -1,8 +1,14 @@
-import { Form, useRouteError } from 'react-router-dom'
+import { Form, useNavigation, useRouteError } from 'react-router-dom'
 import AppButton from '../components/AppButton'
+import { ArrowPathIcon } from '@heroicons/react/24/solid'
 
 export default function Login() {
 	const error = useRouteError()
+	const navigation = useNavigation()
+
+	const isSubmitting =
+		navigation.state === 'loading' || navigation.state === 'submitting'
+
 	return (
 		<section>
 			<Form
@@ -24,7 +30,13 @@ export default function Login() {
 					{error && <p className="text-red-600">{error.message}</p>}
 				</div>
 				<div>
-					<AppButton className="w-full rounded-md text-lg">
+					<AppButton
+						disabled={isSubmitting}
+						className="flex w-full items-center justify-center rounded-md text-lg"
+					>
+						{isSubmitting && (
+							<ArrowPathIcon className="size-4 animate-spin" />
+						)}
 						Login
 					</AppButton>
 				</div>
