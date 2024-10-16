@@ -104,7 +104,7 @@ export default boardSlice.reducer
 const debouncedUpdateData = debounce(
 	async (columns, store) => {
 		try {
-			store.dispatch(setStatus({ status: 'loading' }))
+			store.dispatch(setStatus({ status: 'saving' }))
 			await updateData(columns)
 		} catch (error) {
 			if (error?.response?.data.code === 401) {
@@ -116,7 +116,7 @@ const debouncedUpdateData = debounce(
 				)
 			}
 		} finally {
-			store.dispatch(setStatus({ status: 'idle' }))
+			store.dispatch(setStatus({ status: 'saved' }))
 		}
 	},
 	500,

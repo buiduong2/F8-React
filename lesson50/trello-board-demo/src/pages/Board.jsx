@@ -53,9 +53,8 @@ export default function Board() {
 					/>
 				)}
 			</div>
-			<div>
-				<BoardLoading />
-			</div>
+
+			<BoardLoading />
 		</div>
 	)
 }
