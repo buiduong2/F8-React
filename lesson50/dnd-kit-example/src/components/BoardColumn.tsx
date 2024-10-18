@@ -22,7 +22,9 @@ export default function BoardColumn(props: Props) {
 		attributes,
 		transform,
 		transition,
-		isDragging
+		isDragging,
+		over,
+		active
 	} = useSortable({
 		id: column.id,
 		data: {
@@ -31,9 +33,14 @@ export default function BoardColumn(props: Props) {
 		}
 	})
 
+	const isOverContainer =
+		over &&
+		((column.id === over.id && active?.data.current?.type !== 'column') ||
+			rowIds.includes(over.id as string))
+
 	const style: React.CSSProperties = {
 		transition,
-		transform: CSS.Transform.toString(transform),
+		transform: CSS.Translate.toString(transform),
 		opacity: isDragging ? 0.3 : 1
 	}
 
@@ -43,11 +50,14 @@ export default function BoardColumn(props: Props) {
 			{...listeners}
 			{...attributes}
 			style={style}
-			className={` flex-grow rounded-lg overflow-hidden border border-gray-400`}
+			className={
+				`rounded-lg overflow-hidden border border-gray-400 w-80 shrink-0 touch-auto bg-blue-gray-50 ` +
+				`${isOverContainer ? 'bg-blue-gray-100 transition-colors' : ''}`
+			}
 		>
-			<h1 className="bg-white p-3 font-bold text-lg">{column.name}</h1>
+			<h1 className=" bg-white p-3 font-bold text-lg">{column.name}</h1>
 			<SortableContext items={rowIds}>
-				<ul className=" bg-blue-gray-50 p-5 flex flex-col gap-5">
+				<ul className={`p-5 flex flex-col gap-3`}>
 					{column.rows.map((row, index) => (
 						<BoardColumnRow
 							key={row.id}

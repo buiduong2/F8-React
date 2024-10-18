@@ -16,6 +16,8 @@ export default function BoardColumnRow(props: Props) {
 		borderClass = 'border-l-blue-300'
 	} else if (row.id[0] === 'B') {
 		borderClass = 'border-l-yellow-300'
+	} else if (row.id[0] === 'C') {
+		borderClass = 'border-l-teal-300'
 	} else {
 		borderClass = 'border-l-red-300'
 	}
@@ -32,13 +34,13 @@ export default function BoardColumnRow(props: Props) {
 		data: {
 			type: 'row',
 			columnIndex,
-			rowIndex,
+			rowIndex
 		}
 	})
 
 	const style: React.CSSProperties = {
 		transition,
-		transform: CSS.Transform.toString(transform),
+		transform: CSS.Translate.toString(transform),
 		opacity: isDragging ? 0.3 : 1
 	}
 
@@ -48,7 +50,7 @@ export default function BoardColumnRow(props: Props) {
 			{...listeners}
 			{...attributes}
 			style={style}
-			className={`border-l-4  bg-white p-3 border border-gray-400 rounded ${borderClass}`}
+			className={`border-l-4  bg-white p-3 border border-gray-400 rounded touch-auto ${borderClass}`}
 		>
 			{row.name}
 		</li>
