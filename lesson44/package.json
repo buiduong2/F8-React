@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@heroicons/react": "^2.1.5",
 		"@material-tailwind/react": "2.1.9",
+		"lesson44": "file:",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},

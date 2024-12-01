@@ -1,8 +1,3 @@
-# React + Vite
+# Ứng dụng TODO APP Học tập về việc sử dụng State
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Link DEMO](https://buiduong2.github.io/F8-React/lesson45/todo-app/dist/)
